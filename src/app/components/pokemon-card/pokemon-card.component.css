@@ -1,0 +1,16 @@
+.card {
+    padding:10px;
+    border:1px solid #aaa;
+    text-align:center;
+}
+.card:hover {
+    background-color: #ededed;
+    cursor:pointer;
+}
+h1 {
+    font-size:16px;
+}
+.on-team {
+    background-color:yellow;
+    color:magenta;
+}

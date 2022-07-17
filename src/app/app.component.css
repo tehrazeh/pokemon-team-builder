@@ -1,0 +1,11 @@
+input {
+    width:300px;
+    padding:10px 15px;
+}
+
+#pokemon-list {
+    display:grid;
+    grid-template-columns: repeat(3, 200px);
+    column-gap: 10px;
+    row-gap:10px;
+}

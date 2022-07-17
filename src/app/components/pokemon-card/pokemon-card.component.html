@@ -1,0 +1,8 @@
+
+<!-- div with the pokemon info -->
+<div class="card">
+    <h1>{{pokemon.name}}</h1>
+    <img src="assets/{{pokemon.image}}/"/>
+    <p>Attack Power:{{pokemon.attack}}</p>
+    <p class="on-team" *ngIf="pokemon.isOnTeam === true">On the Team!</p>
+</div>
