@@ -1,0 +1,45 @@
+
+    <!-- this is a block that contains pokemon and its evolution photos,
+    it's type and short description -->
+    <div class ="infoCard">
+        <div class="info-box">
+            <div class="imgBox">
+                <img class="infoImage" src="assets/infoImages/{{clickedPokemon.name.toLowerCase() + '.png'}}/">
+                <p class="image_description">{{clickedPokemon.name}}</p>
+            </div>
+            
+        </div>
+
+        <div class="evo">
+            <div class="attributeBox">
+                <img class="attributeImage" src="assets/infoImages/evolution.png">
+                 <p class="image_description">Evolution</p>
+            </div>
+            
+        </div>
+        
+        <div class="info-box">
+            <div class="imgBox">
+                <img class="infoImage" src="assets/infoImages/{{clickedPokemon.evolution.toLowerCase() + '.png'}}/">
+                <p class="image_description">{{clickedPokemon.evolution}}</p>
+            </div>
+        </div>
+
+            <div class="type">
+                <p>Type: </p>
+                <div class="attributeBox">
+                    <img class="attributeImage" src="assets/types/{{clickedPokemon.type + '.png'}}/">
+                <p class="image_description">{{clickedPokemon.type}}</p>
+                </div>
+                
+            </div>
+
+            <div>
+                <h4>Pokemon {{clickedPokemon.name}} evolves into {{clickedPokemon.evolution}}</h4>
+            </div>
+    </div>
+    
+
+    
+
+

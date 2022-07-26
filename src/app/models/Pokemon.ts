@@ -2,8 +2,9 @@
 export default interface Pokemon {
     id:number,
     name:string,
-    image:string,
-    type:string,
+    evolution:string,
     isOnTeam:boolean,
-    attack:number
+    attack:number,
+    type: string
+    //description: string
 }

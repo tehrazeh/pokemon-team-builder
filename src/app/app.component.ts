@@ -9,109 +9,124 @@ import Pokemon from './models/Pokemon';
 })
 
 export class AppComponent {
-  title = 'a3-starter';
+  title = 'poke-app';
 
   // arrays for search and team lists of pokemons
+
+  clickChecker:number = 0
 
   searchResults:Pokemon[] = []
 
   teamList:Pokemon[] = []
 
-  
-
-  
+  clickedInfo: Pokemon = {
+    id:0,
+    name:"",
+    evolution:"",
+    type:"",
+    isOnTeam:false,
+    attack:0
+  }
 
   // list of pokemon here, uncomment as needed
   pokemonList:Pokemon[] = [
     {
         id:69,
         name:"Bellsprout",
-        type:"grass",        
-        image:"bellsprout.png",
+        type:"grass",
+        evolution: "Victreebel",        
         attack:25,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:1, 
         name:"Bulbasaur",
         type:"grass",
-        image:"bulbasaur.png",
+        evolution: "Venusaur",
         attack:100,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:4,
         name:"Charmander",
         type:"fire",
-        image:"charmander.png",
+        evolution: "Charizard",
         attack:45,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:132,
         name:"Ditto",
         type:"normal",
-        image:"ditto.png",
+        evolution: "Ditto",
         attack:40,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:133,
         name:"Eevee",
         type:"normal",
-        image:"eevee.png",
+        evolution: "Umbreon",
         attack:30,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:52,
         name:"Meowth",
         type:"normal",
-        image:"meowth.png",
+        evolution: "Persian",
         attack:80,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:25,
         name:"Pikachu",
-        type:"electric",
-        image:"pikachu.png",
+        type:"electricity",
+        evolution: "Raichu",
         attack:10,
-        isOnTeam:false
+        isOnTeam:false,
     },
     {
         id:54,
         name:"Psyduck",
         type:"water",
-        image:"psyduck.png",
+        evolution: "Golduck",
         attack:85,
-        isOnTeam:false
+        isOnTeam:false,
+
     },
     {
         id:7,
         name:"Squirtle",
         type:"water",
-        image:"squirtle.png",
+        evolution: "Blastoise",
         attack:90,
-        isOnTeam:false
+        isOnTeam:false,
     },    
   ]
 
-  campus:number[] = [1, 7, 2, 3, 8]
   count = this.pokemonList.length; // property for number of pokemons
   
   // function that runs when user clicks the pokemoncard
   pokeClicked(pokeId:number) {
  
+    this.clickChecker = 1
     let poke: Pokemon = this.pokemonList.find((poke: any) => poke.id === pokeId)! // get the pokemon object
     let index: number = this.pokemonList.findIndex((poke: any) => poke.id === pokeId)! // get the index of that object
     this.pokemonList[index].isOnTeam = true; // the pokemon now is on the team
+
+    this.clickedInfo.name = this.pokemonList[index].name
+    this.clickedInfo.evolution = this.pokemonList[index].evolution
+    this.clickedInfo.type = this.pokemonList[index].type
 
     // if pokemon is not on the team, we push it into team array.
     if (this.teamList.filter(poke => poke.id === pokeId).length < 1) {
         this.teamList.push(poke)
     } else {
-        console.log("Cannot add pokemon, this pokemon is already on your team")
+        //alert("Cannot add pokemon, this pokemon is already on your team")
+        let indexInTeam: number = this.teamList.findIndex((poke: any) => poke.id === pokeId)! // get the pokemon index from the team array
+        this.teamList.splice(indexInTeam, 1) // delete found pokemon from the team
+        this.pokemonList[index].isOnTeam = false; // change isonteam property to false
     }
     
   }
@@ -122,13 +137,18 @@ export class AppComponent {
     
     // we search a entered substring in names of pokemons and return an array of matches
     if (evt.keyCode === 13) {
+      if (evt.target.value.toLowerCase() == 'water' ||
+          evt.target.value.toLowerCase() == 'grass' || 
+          evt.target.value.toLowerCase() == 'fire' ||
+          evt.target.value.toLowerCase() == 'normal' ||
+          evt.target.value.toLowerCase() == 'electricity') {
+            this.searchResults = this.pokemonList.filter(poke => poke.type.includes(evt.target.value))
+      } else {
         this.searchResults = this.pokemonList.filter(poke => poke.name.includes(evt.target.value))
+      }
+        
     }
   }
-
-  
-
-  
 
 }
 

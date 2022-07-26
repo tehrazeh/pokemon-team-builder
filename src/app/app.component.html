@@ -1,29 +1,42 @@
+<body>
 
-
-<app-header></app-header>
+  <!-- displays header -->
+  <app-header></app-header>
 
 <!-- input to search for a pokemon -->
-<input type="text"
+<div class="searchBar">
+  <input type="text"
  placeholder="Enter name of  pokemon"
  (keydown)="inputChanged($event)"/>
+</div>
+
+
+
+
 
 <!-- by default this div displays the whole array of pokemons, but when we search
   and it finds matches, it displays #searched template with matches -->
-<div id="pokemon-list" *ngIf="searchResults.length < 1 else searched">
-  <app-pokemon-card 
-  *ngFor="let poke of pokemonList"
-  [pokemon] = "poke"
-  (click)="pokeClicked(poke.id)"></app-pokemon-card>  
-</div>
+  <main>
+    <div id="pokemon-list" *ngIf="searchResults.length < 1 else searched">
+      <app-pokemon-card 
+      *ngFor="let poke of pokemonList"
+      [pokemon] = "poke"
+      (click)="pokeClicked(poke.id)"></app-pokemon-card>  
+    </div>
+    <app-info-card *ngIf="clickChecker == 1" [clickedPokemon] = "clickedInfo"></app-info-card>
+  </main>
+
+
 
 
 
 <!-- displays the names of pokemons that are in the team -->
 <h1>Who's on The Team?</h1>
-<ul *ngFor="let pokeTeam of teamList">
-  <li>{{pokeTeam.name}}</li>
-</ul>
-
+<div class="team"> 
+  <div  *ngFor="let pokeTeam of teamList">
+    <img src="/assets/cards/{{pokeTeam.name.toLowerCase() + '.png'}}">
+  </div>
+</div>
 
 <!-- template that runs when the input matches the substring of name of at leas one pokemon-->
 <ng-template #searched>
@@ -34,3 +47,4 @@
     (click)="pokeClicked(poke.id)"></app-pokemon-card>
 </div>
 </ng-template>
+</body>

@@ -12,7 +12,7 @@ export class PokemonCardComponent implements OnInit {
   @Input() pokemon:Pokemon = {
     id:0,
     name:"",
-    image:"",
+    evolution:"",
     type:"",
     isOnTeam:false,
     attack:0
