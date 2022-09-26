@@ -109,7 +109,7 @@ export class AppComponent {
   
   // function that runs when user clicks the pokemoncard
   pokeClicked(pokeId:number) {
- 
+    
     this.clickChecker = 1
     let poke: Pokemon = this.pokemonList.find((poke: any) => poke.id === pokeId)! // get the pokemon object
     let index: number = this.pokemonList.findIndex((poke: any) => poke.id === pokeId)! // get the index of that object
@@ -127,6 +127,7 @@ export class AppComponent {
         let indexInTeam: number = this.teamList.findIndex((poke: any) => poke.id === pokeId)! // get the pokemon index from the team array
         this.teamList.splice(indexInTeam, 1) // delete found pokemon from the team
         this.pokemonList[index].isOnTeam = false; // change isonteam property to false
+        this.clickChecker = 0
     }
     
   }
@@ -146,7 +147,9 @@ export class AppComponent {
       } else {
         this.searchResults = this.pokemonList.filter(poke => poke.name.includes(evt.target.value))
       }
-        
+      if (this.clickChecker === 1) {
+        this.clickChecker = 0
+      }
     }
   }
 
