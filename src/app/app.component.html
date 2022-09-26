@@ -31,11 +31,13 @@
 
 
 <!-- displays the names of pokemons that are in the team -->
+<div *ngIf="teamList.length > 0">
 <h1>Who's on The Team?</h1>
 <div class="team"> 
-  <div  *ngFor="let pokeTeam of teamList">
+  <div class="teamIcons"  *ngFor="let pokeTeam of teamList">
     <img src="/assets/cards/{{pokeTeam.name.toLowerCase() + '.png'}}">
   </div>
+</div>
 </div>
 
 <!-- template that runs when the input matches the substring of name of at leas one pokemon-->

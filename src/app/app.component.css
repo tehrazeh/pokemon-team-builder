@@ -31,10 +31,14 @@ input {
 
 .team {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     background: #262626;
     margin: 0 auto;
+}
+
+.teamIcons {
+    padding: 0 30px;
 }
 
 h1 {
